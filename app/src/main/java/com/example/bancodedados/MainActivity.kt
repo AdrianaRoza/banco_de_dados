@@ -9,9 +9,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         try {
-            
+
             //Criar Banco de Dados
-            val daraBase = openOrCreateDatabase( "DB_SUPPLIERS", MODE_PRIVATE, null)
+            val dataBase = openOrCreateDatabase( "DB_SUPPLIERS", MODE_PRIVATE, null)
+
+            //Criar uma Tabela
+            dataBase.execSQL("CREATE TABLE IF NOT EXISTS supplierS(name VARCHAR, telephone INT(4) )")
 
         }catch (e: Exception){
             e.printStackTrace()
