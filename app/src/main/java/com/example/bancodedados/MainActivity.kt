@@ -2,6 +2,7 @@ package com.example.bancodedados
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +16,13 @@ class MainActivity : AppCompatActivity() {
 
             //Criar uma Tabela
             dataBase.execSQL("CREATE TABLE IF NOT EXISTS supplierS(name VARCHAR, telephone INT(4) )")
+
+            //Inserir Dados em uma Tabela
+            dataBase.execSQL("INSERT INTO suppliers(name, telephone) VALUES ('Alexsandro', 1234)")
+
+            val query = "SELECT name, telephone FROM suppliers"
+
+            val cursor = dataBase.rawQuery( query, null)
 
         }catch (e: Exception){
             e.printStackTrace()
